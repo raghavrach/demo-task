@@ -43,7 +43,7 @@ class GroupsType extends AbstractType
                 'mapped' => true,
                 'by_reference' => true
              ))
-             ->add('save', SubmitType::class, ['label' => 'Save Task', 'attr' => ['class' => 'btn btn-primary'] ])
+             ->add('save', SubmitType::class, ['label' => 'Save Group', 'attr' => ['class' => 'btn btn-primary'] ])
         ;
     }
     

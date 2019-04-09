@@ -1,7 +1,7 @@
 <header>
     <nav class="header-wrapper navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="<?php echo $view['router']->path('homepage'); ?>"><h1 class="headerTitle">Symfony Test</h1></a>
+            <a class="navbar-brand" href="<?php echo $view['router']->path('homepage'); ?>"><h1 class="headerTitle">InterNations Demo Task</h1></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
             </button>
