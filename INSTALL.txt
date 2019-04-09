@@ -1,0 +1,25 @@
+1) Clone or Download the project to your root document
+2) Configure the host in yout host file.
+3) Add a new virtual domain in apache config file
+	<VirtualHost *:80>
+	    ServerName {domain_name}
+	    ServerAdmin {admin_email}
+	    DocumentRoot {project_paths}
+	</VirtualHost>
+4) Go to your project root folder and download PHP composer.phar using follwing commands
+If you have already installed composer globally you dont need to do it.
+	-: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+	-: php -r "if (hash_file('sha384', 'composer-setup.php') === '48e3236262b34d30969dca3c37281b3b4bbe3221bda826ac6a9a62d6444cdb0dcd0615698a5cbe587c3f0fe57a54d8f5') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+	-: php composer-setup.php
+	-: php -r "unlink('composer-setup.php');"
+5) Do composer update to install Symfony framework dependent libraries. Using following command
+	-: php composer.phar update
+This process will take around 5-10 mins.
+7) Once the all required vendor libraries are downloaded, update the database configurations DATABASE_URL in 
+	{project_root_folder}/.env
+8) Create the database.
+	- php bin/console doctrine:database:create
+9) Update the schema. Which creates tables based on your entities
+	- php bin/console doctrine:schema:update --force
+10) Currently the DataFixtures are not created. Please execute following query from following path. Once schema is updated.
+10) Thats it. Installation completes

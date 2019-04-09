@@ -1,0 +1,49 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+# Default page and login page
+homepage:
+    path:       /
+    controller: App\Controller\LoginController::index
+ 
+ # Logins
+app_login:
+    path:       /login
+    controller: App\Controller\LoginController::index
+# Logout Page
+app_logout:
+    path:       /logout
+    controller: App\Controller\LoginController::logout
+
+# Manage Users
+app_manage_users:
+    path: /users/
+    controller: App\Controller\UsersController::index
+# Save Users
+app_save_users:
+    path: /admin/users/save
+    controller: App\Controller\UsersController::saveItem
+    
+# Manage Groups
+app_manage_groups:
+    path: /groups/
+    controller: App\Controller\GroupsController::index
+# Save Groups
+app_edit_groups:
+    path: /admin/groups/{groupId}
+    controller: App\Controller\GroupsController::index
+# Remove Groups
+app_unlink_groups:
+    path: /admin/groups/unlink/{groupId}
+    controller: App\Controller\GroupsController::unlink
+    
+# Error Pages
+app_error_not_found:
+    path: /error/404
+    controller: App\Controller\ErrorController::notFound
+app_error_system_error:
+    path: /error/systemError
+    controller: App\Controller\ErrorController::systemError
+
+    
