@@ -73,7 +73,7 @@ class Groups
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Users", mappedBy="groups")
+     * @ORM\ManyToMany(targetEntity="Users", mappedBy="groups", cascade={"remove"})
      */
     private $users;
 

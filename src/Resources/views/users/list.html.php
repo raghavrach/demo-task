@@ -50,6 +50,9 @@ $view['slots']->start('_body_content');
                             <th class="text-center">#</th>  
                             <th class="text-center">User</th>
                             <th class="text-center">Email</th>
+                            <?php if($view['security']->isGranted('ROLE_ADMIN')){ ?>
+                                <th>&nbsp;</th>
+                            <?php } ?>
                           </tr>
                         </thead>
                         <tbody>
@@ -62,6 +65,9 @@ $view['slots']->start('_body_content');
                                 <td><?php echo ++$counter; ?></td>
                                 <td><?php echo $gUser->getName(); ?></td>
                                 <td><?php echo $gUser->getEmail(); ?></td>
+                                <?php if($view['security']->isGranted('ROLE_ADMIN')){ ?>
+                                <td><a href="<?php echo $view['router']->path('app_unlink_users', ['userId' => $gUser->getId()]); ?>" class="btn btn-danger" onclick="confirm('<?php echo  sprintf(\App\Library\MessageConst::VAL000018, 'User'); ?>');">Delete</a></td>
+                                <?php } ?>
                             </tr>
                             <?php
                         }

@@ -58,7 +58,8 @@ class UsersController extends BaseController
         $validators = new UserValidator();
         $registerPost = $request->get('register');
         $validators->setFormValidator($registerPost);
-
+        
+        // Check validation clears
         if (!$validators->isValid())
         {
             $errorMessages = $validators->getPageErrors();
@@ -87,6 +88,36 @@ class UsersController extends BaseController
         $em->persist($user);
         $em->flush();
         $this->addFlash('successMessages', MessageConst::VAL000008);
+        return $this->redirectToRoute('app_manage_users');
+    }
+    
+    /**
+     * Delete a user
+     *
+     * @param Request $request A request object
+     * @param $userObj Users Entity Repository
+     * @return Response object.
+     */
+    
+    public function deleteUser(Request $request, $userId, UsersRepository $userObj): Response
+    {
+        # Get group details
+        $userInfo = $userObj->findOneById($userId);
+        if(!$userInfo)
+        {
+            return $this->forward('App\Controller\ErrorController::systemError', ['message' => MessageConst::VAL000012]);
+        }
+        
+        // Later to show in confirmation message.
+        $userName = $userInfo->getName();
+        
+        // Delete the User. This intern unlink user from related groups.
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($userInfo);
+        $em->flush();
+        
+        // Set success message and redirect
+       $this->addFlash('successMessages', sprintf(MessageConst::VAL000017, $userName));
         return $this->redirectToRoute('app_manage_users');
     }
 }

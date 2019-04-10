@@ -24,4 +24,6 @@ class MessageConst
     const VAL000014 = 'Group: %s has been deleted successfully.';
     const VAL000015 = 'Data you are trying to modify is currently not valid.';
     const VAL000016 = 'The user with given email id %s already exists.';
+    const VAL000017 = 'User: %s has been deleted successfully.';
+    const VAL000018 = 'Are you sure, you want to delete this %s? \nThis may lead to delete any dependent information.';
 }

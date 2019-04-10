@@ -131,8 +131,6 @@ class GroupsController extends BaseController
     
     public function unlink(Request $request, $groupId, GroupsRepository $groupObj): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        
         # Get group details
         $groupInfo = $groupObj->findOneById($groupId);
         if(!$groupInfo)

@@ -24,6 +24,10 @@ app_manage_users:
 app_save_users:
     path: /admin/users/save
     controller: App\Controller\UsersController::saveItem
+# Remove Users
+app_unlink_users:
+    path: /admin/users/delete/{userId}
+    controller: App\Controller\UsersController::deleteUser
     
 # Manage Groups
 app_manage_groups:

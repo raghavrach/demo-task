@@ -52,9 +52,9 @@ $view['slots']->start('_body_content');
                           <tr>
                             <th class="text-center">#</th>  
                             <th class="text-center">Name</th>
-                            <th class="text-center">Group User</th>
+                            <th class="text-center">Group Users</th>
                             <?php if($view['security']->isGranted('ROLE_ADMIN')){ ?>
-                            <th>&nbsp;</th>
+                                <th>&nbsp;</th>
                             <?php } ?>
                           </tr>
                         </thead>
@@ -67,7 +67,7 @@ $view['slots']->start('_body_content');
                             <tr>
                                 <td><?php echo ++$counter; ?></td>
                                 <td><?php echo $group->getName(); ?></td>
-								<td>
+                                <td>
                                     <?php if($group->getUsers()){ 
                                         foreach($group->getUsers() as $user){
                                             ?><p class="subInfo"><?php echo $user->getName(); ?></p><?php
@@ -78,7 +78,7 @@ $view['slots']->start('_body_content');
                                 <?php if($view['security']->isGranted('ROLE_ADMIN')){ ?>
                                 <td>
                                     <a href="<?php echo $view['router']->path('app_edit_groups', array('groupId' => $group->getId())); ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?php echo $view['router']->path('app_unlink_groups', array('groupId' => $group->getId())); ?>" class="btn btn-danger">Delete</a>
+                                    <a href="<?php echo $view['router']->path('app_unlink_groups', array('groupId' => $group->getId())); ?>" class="btn btn-danger" onclick="confirm('<?php echo  sprintf(\App\Library\MessageConst::VAL000018, 'Group'); ?>');">Delete</a>
                                 </td>
                                 <?php } ?>
                             </tr>
